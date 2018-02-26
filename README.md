@@ -1,3 +1,35 @@
+# Задание 3
+
+- Созданы образы для каждого из сервисов
+- Если базовый образ использовался ранее при сборке новых образов он не скачивается повторно (образ для сервиса ui)
+- Из созданных образов запущены и проверены контейнеры
+- Запуск контейнеров с альтернативными сетевыми алиасами и переменным окружения:
+
+```docker run -d \
+--network=reddit \
+--network-alias=net_post_db \
+--network-alias=net_comment_db \
+mongo:latest```
+
+```docker run -d \
+--network=reddit \
+--network-alias=net_post \
+-e POST_DATABASE_HOST=net_post_db \
+alltoday/post:1.0```
+
+```docker run -d \
+--network=reddit \
+--network-alias=net_comment \
+-e COMMENT_DATABASE_HOST=net_comment_db \
+alltoday/comment:1.0```
+
+```docker run -d \
+--network=reddit \
+-p 9292:9292 \
+-e POST_SERVICE_HOST=net_post \
+-e COMMENT_SERVICE_HOST=net_comment \
+alltoday/ui:1.0```
+
 # Задание 2
 
 - Установлен docker-machine в GCP
