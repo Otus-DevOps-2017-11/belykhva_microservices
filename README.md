@@ -38,6 +38,19 @@ docker run -d \
 alltoday/ui:1.0
 ```
 
+- Собран образ ui на основе Alpine Linux, Dockerfile в репозитории, результат ниже:
+
+```
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+alltoday/ui            3.0                 9bb76b9b20dd        17 minutes ago      209MB
+alltoday/ui            2.0                 ebf2048876c9        13 hours ago        455MB
+alltoday/ui            1.0                 c3975436b35c        13 hours ago        779MB
+alltoday/comment       1.0                 6804fe2f4fb4        14 hours ago        771MB
+alltoday/post          1.0                 84e936431ca6        14 hours ago        102MB
+```
+
+- Docker volume создан и подключен к контейнеру MongoDB
+
 # Задание 2
 
 - Установлен docker-machine в GCP

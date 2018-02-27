@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM alpine:3.7
 
 ENV POST_SERVICE_HOST post
 ENV POST_SERVICE_PORT 5000
@@ -6,10 +6,14 @@ ENV COMMENT_SERVICE_HOST comment
 ENV COMMENT_SERVICE_PORT 9292
 ENV APP_HOME /app
 
-RUN apt-get update && \
-    apt-get install -y ruby-full ruby-dev build-essential && \
-    gem install bundler --no-ri --no-rdoc && \
-    mkdir $APP_HOME
+ENV BUILD_PACKAGES bash curl-dev ruby-dev build-base
+ENV RUBY_PACKAGES ruby ruby-io-console ruby-bundler
+
+RUN apk update && \
+    apk upgrade && \
+    apk add $BUILD_PACKAGES && \
+    apk add $RUBY_PACKAGES && \
+    rm -rf /var/cache/apk/*
 
 WORKDIR $APP_HOME
 
