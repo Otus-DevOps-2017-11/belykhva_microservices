@@ -1,0 +1,10 @@
+REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
+yourname/ubuntu-tmp-file   latest              f14270edea96        26 seconds ago      112MB
+ubuntu                     16.04               0458a4468cbc        4 weeks ago         112MB
+hello-world                latest              f2a91732366c        3 months ago        1.85kB
+
+Задание со *
+
+Выводы разные, т.к. сущности "образ" и "контейнер" разные по своей природе.
+Образ - базовый набор слоёв для создания контейнера.
+Контейнер - слои исходного образа RO + слой RW + ограничения cgroups, namespaces, selinux + сетевые параметры, пробросы портов и т.д.
