@@ -6,8 +6,8 @@ ENV COMMENT_SERVICE_HOST comment
 ENV COMMENT_SERVICE_PORT 9292
 ENV APP_HOME /app
 
-ENV BUILD_PACKAGES bash curl-dev ruby-dev build-base
-ENV RUBY_PACKAGES ruby ruby-io-console ruby-bundler
+ARG BUILD_PACKAGES bash curl-dev ruby-dev build-base
+ARG RUBY_PACKAGES ruby ruby-io-console ruby-bundler
 
 RUN apk update && \
     apk upgrade && \
@@ -17,9 +17,9 @@ RUN apk update && \
 
 WORKDIR $APP_HOME
 
-ADD Gemfile* $APP_HOME/
+COPY Gemfile* $APP_HOME/
 RUN bundle install
-ADD . $APP_HOME
+COPY . $APP_HOME
 
 CMD ["puma"]
 

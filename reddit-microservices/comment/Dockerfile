@@ -10,9 +10,9 @@ RUN apt-get update -qq && \
 
 WORKDIR $APP_HOME
 
-ADD Gemfile* $APP_HOME/
+COPY Gemfile* $APP_HOME/
 RUN bundle install
-ADD . $APP_HOME
+COPY . $APP_HOME
 
 CMD ["puma"]
 
