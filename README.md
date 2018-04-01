@@ -1,6 +1,6 @@
 # Задание 6
 
-emptyyyyyy
+emptyyyyyyy
 
 # Задание 4
 
