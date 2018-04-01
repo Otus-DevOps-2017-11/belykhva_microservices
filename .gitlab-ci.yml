@@ -9,6 +9,7 @@ variables:
 
 before_script:
   - cd reddit
+  - ls -la
   - bundle install
 
 build_job:
