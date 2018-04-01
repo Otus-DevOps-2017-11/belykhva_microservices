@@ -1,6 +1,30 @@
 # Задание 6
 
-!!!emptyyyyyyy
+- На GCE установлен GitLab
+- Создана группа и проект
+- Залит код приложения reddit
+- В .gitlab-ci создано описания пайплайна
+- Установлен Runner
+
+## Задание со *
+
+- Т.к. команда gitlab-runner register поддерживает неинтерактивный режим и все ответы можно ввести либо в cli либо заранее, через переменные окружения, то соответствующий сценарий можно засунуть в ansible-playbook. Ниже вариант единой команды cli:
+
+```
+docker exec -it gitlab-runner-name \
+gitlab-runner register \
+--non-interactive \
+--url 'http://11.11.11.11' \
+--registration-token 'token' \
+--name 'autorunner' \
+--tag-list 'docker,ubuntu,xenial' \
+--run-untagged \
+--executor 'docker' \
+--docker-image 'alpine:latest'
+```
+
+- Инеграция со Slack выполнена
+
 
 # Задание 4
 
